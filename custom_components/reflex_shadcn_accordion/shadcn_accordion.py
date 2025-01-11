@@ -2,6 +2,7 @@ import reflex as rx
 from reflex.vars import Var
 from typing import Any, Dict, List, Union
 from reflex.vars.base import ImportVar, VarData
+from reflex.style import Style
 
 def cn(*args: Union[Var, str], **kwargs: Union[Var, str]) -> Var:
     """Merge Tailwind CSS classes."""
@@ -33,9 +34,9 @@ class AccordionItem(rx.Component):
     library: str = "@radix-ui/react-accordion" 
     tag: str = "Item"
 
-    style: Dict[str, Any] = {
+    style = Style({
         "border_bottom": "1px solid var(--border)",
-    }
+    })
 
 class AccordionTrigger(rx.Component):
     """The trigger button of an accordion item."""
@@ -43,7 +44,7 @@ class AccordionTrigger(rx.Component):
     library: str = "@radix-ui/react-accordion"
     tag: str = "Trigger"
     
-    style: Dict[str, Any] = {
+    style = Style({
         "display": "flex",
         "flex": 1,
         "align_items": "center", 
@@ -55,7 +56,7 @@ class AccordionTrigger(rx.Component):
         "_hover": {
             "text_decoration": "underline"
         }
-    }
+    })
 
 class AccordionContent(rx.Component):
     """The content of an accordion item."""
@@ -63,10 +64,10 @@ class AccordionContent(rx.Component):
     library: str = "@radix-ui/react-accordion"
     tag: str = "Content"
     
-    style: Dict[str, Any] = {
+    style = Style({
         "overflow": "hidden",
         "font_size": "sm",
-    }
+    })
 
 # namings
 accordion = Accordion.create
